@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+  <title>লোন হিসাব</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: sans-serif;
+    }
+
+    .container {
+      width: 500px;
+      margin: 0 auto;
+    }
+
+    .header {
+      background-color: #000;
+      color: #fff;
+      padding: 10px;
+    }
+
+    .form {
+      padding: 20px;
+    }
+
+    input {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ccc;
+    }
+
+    .result {
+      margin-top: 20px;
+      padding: 20px;
+      border: 1px solid #ccc;
+    }
+
+    .copy-button {
+      background-color: #000;
+      color: #fff;
+      padding: 10px;
+      border: 1px solid #ccc;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <h1>লোন হিসাব</h1>
+    </div>
+    <div class="form">
+      নামঃ-
+      <input type="text" placeholder="নাম" id="name" value="আপনার"><br><br>
+      লোনের পরিমাণঃ-
+      <input type="text" placeholder="লোনের পরিমাণ" id="loan-amount"><br><br>
+      মুনাফার হারঃ-
+      <input type="text" placeholder="মুনাফার হার" id="profit-rate"><br><br>
+      মোট পাঠাইছেঃ-
+      <input type="text" placeholder="মোট পাঠাইছে" id="payment-amount"><br><br>
+      <button type="button" id="calculate">হিসাব করুন</button>
+    </div>
+    <div class="result">
+      <pre id="result-text"></pre>
+    </div>
+  </div>
+
+  <script>
+    const nameInput = document.querySelector('#name');
+    const loanAmountInput = document.querySelector('#loan-amount');
+    const profitRateInput = document.querySelector('#profit-rate');
+    const paymentAmountInput = document.querySelector('#payment-amount');
+    const calculateButton = document.querySelector('#calculate');
+    const resultText = document.querySelector('#result-text');
+
+    calculateButton.addEventListener('click', () => {
+      const loanAmount = parseFloat(loanAmountInput.value);
+      const profitRate = parseFloat(profitRateInput.value);
+      const paymentAmount = parseFloat(paymentAmountInput.value);
+
+      const profit = loanAmount * profitRate / 100;
+      const profitPaid = profit;
+      const totalPaid = paymentAmount;
+      const payment =  totalPaid - profitPaid;
+      const remainingLoan = loanAmount - payment;
+      const nextMonthProfit = remainingLoan * profitRate / 100;
+
+      const result = `
+${nameInput.value},
+লোন ছিল = ${loanAmount} টাকা
+মুনাফা এসেছে = ( ${loanAmount} × ${profitRate}% ) = ${profit} টাকা
+
+এখন,
+মুনাফা দিয়েছেন = ${profitPaid} টাকা
+পরিশোধ করেছেন = ${payment} টাকা
+মোট দিয়েছেন = ( ${profitPaid} + ${payment} ) = ${totalPaid} টাকা
+
+তাহলে,
+লোন রইলো = ( ${loanAmount} - ${payment} ) = ${remainingLoan} টাকা
+আগামী মাসে মুনাফা আসবে = ( ${remainingLoan} × ${profitRate}% ) = ${nextMonthProfit} টাকা
+`;
+      resultText.innerHTML = result;
+    });
+  </script>
+</body>
+</html>
