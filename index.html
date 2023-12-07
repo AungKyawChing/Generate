@@ -56,12 +56,12 @@
     <div class="form">
       নামঃ-
       <input type="text" placeholder="নাম" id="name" value="আপনার"><br><br>
-      লোনের পরিমাণঃ-
-      <input type="text" placeholder="লোনের পরিমাণ" id="loan-amount"><br><br>
+      আপনার সর্বশেষ লোনের পরিমানঃ-
+      <input type="text" placeholder="সর্বশেষ লোনের পরিমাণ" id="loan-amount"><br><br>
       মুনাফার হারঃ-
       <input type="text" placeholder="মুনাফার হার" id="profit-rate"><br><br>
-      মোট পাঠাইছেঃ-
-      <input type="text" placeholder="মোট পাঠাইছে" id="payment-amount"><br><br>
+      এ মাসে মোট পরিশোধকৃত টাকার পরিমানঃ-
+      <input type="text" placeholder="মোট পরিশোধকৃত টাকার পরিমান" id="payment-amount"><br><br>
       <button type="button" id="calculate">হিসাব করুন</button>
     </div>
     <div class="result">
@@ -91,17 +91,17 @@
 
       const result = `
 ${nameInput.value},
-লোন ছিল = ${loanAmount} টাকা
-মুনাফা এসেছে = ( ${loanAmount} × ${profitRate}% ) = ${profit} টাকা
+পুর্বের মাস পর্যন্ত আপনার লোন ছিল = ${loanAmount} টাকা
+পুর্বের মাসের স্থিতির উপর মুনাফা = ( ${loanAmount} × ${profitRate}% ) = ${profit} টাকা
 
-এখন,
-মুনাফা দিয়েছেন = ${profitPaid} টাকা
-পরিশোধ করেছেন = ${payment} টাকা
-মোট দিয়েছেন = ( ${profitPaid} + ${payment} ) = ${totalPaid} টাকা
+সর্বশেষ মাসের হালনাগাদ হিসাব,
+পরিশোধকৃত মুনাফা = ${profitPaid} টাকা
+পরিশোধকৃত মুল লোনের টাকার পরিমান = ${payment} টাকা
+এ মাসে পরিশধকৃত (মুনাফা + আসল) টাকার পরিমান = ( ${profitPaid} + ${payment} ) = ${totalPaid} টাকা
 
-তাহলে,
-লোন রইলো = ( ${loanAmount} - ${payment} ) = ${remainingLoan} টাকা
-আগামী মাসে মুনাফা আসবে = ( ${remainingLoan} × ${profitRate}% ) = ${nextMonthProfit} টাকা
+আপনার লোনের হালনাগাদ স্থিতি,
+মুল লোনের পরিমান = ( ${loanAmount} - ${payment} ) = ${remainingLoan} টাকা
+আগামী মাসের মুনাফা = ( ${remainingLoan} × ${profitRate}% ) = ${nextMonthProfit} টাকা
 `;
       resultText.innerHTML = result;
     });
