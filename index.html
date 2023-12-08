@@ -91,16 +91,16 @@
 
       const result = `
 ${nameInput.value},
-পুর্বের মাস পর্যন্ত আপনার লোন ছিল = ${loanAmount} টাকা
-পুর্বের মাসের স্থিতির উপর মুনাফা = ( ${loanAmount} × ${profitRate}% ) = ${profit} টাকা
+পূর্বের মাস পর্যন্ত লোন ছিল = ${loanAmount} টাকা
+পূর্বের মাসের স্থিতির উপর মুনাফা = ( ${loanAmount} × ${profitRate}% ) = ${profit} টাকা
 
 সর্বশেষ মাসের হালনাগাদ হিসাব,
 পরিশোধকৃত মুনাফা = ${profitPaid} টাকা
-পরিশোধকৃত মুল লোনের টাকার পরিমান = ${payment} টাকা
+পরিশোধকৃত মূল লোনের টাকার পরিমান = ${payment} টাকা
 এ মাসে পরিশধকৃত (মুনাফা + আসল) টাকার পরিমান = ( ${profitPaid} + ${payment} ) = ${totalPaid} টাকা
 
 আপনার লোনের হালনাগাদ স্থিতি,
-মুল লোনের পরিমান = ( ${loanAmount} - ${payment} ) = ${remainingLoan} টাকা
+মূল লোনের পরিমান = ( ${loanAmount} - ${payment} ) = ${remainingLoan} টাকা
 আগামী মাসের মুনাফা = ( ${remainingLoan} × ${profitRate}% ) = ${nextMonthProfit} টাকা
 `;
       resultText.innerHTML = result;
